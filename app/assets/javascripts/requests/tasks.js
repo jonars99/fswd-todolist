@@ -47,3 +47,16 @@ var deleteTask = function (id, successCB) {
 
   $.ajax(request);
 };
+
+var completeTask = function (id, successCB) {
+  var request = {
+    type: 'PUT',
+    url: 'api/tasks/' + id + '/mark_complete' + '?api_key=1',
+    success: successCB,
+    error: function (request, errorMessage) {
+      console.log(errorMessage);
+    }
+  };
+
+  $.ajax(request);
+};

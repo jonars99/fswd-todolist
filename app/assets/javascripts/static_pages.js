@@ -34,7 +34,7 @@ $(document).on("turbolinks:load", function () {
 
   $(document).on('change', '.check-box', function () {
     var id = $(this).data('id');
-    console.log(this.checked);
+    completeTask(id);
   });
 
   allTasks();
