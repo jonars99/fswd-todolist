@@ -4,8 +4,12 @@ $(document).on("turbolinks:load", function () {
     if ($('.static_pages.index').length > 0) {
       indexTasks(function (response) {
         var htmlString = response.tasks.map(function(task) {
-          return "<div class='col-12 mb-3 p-2 border rounded task' data-id='" + task.id + "'>" 
-          + task.content + "</div>";
+          return (
+            '<div class="col-12 d-flex flex-row border rounded">' +
+            '<input class="check-box" type="checkbox" data-id="' + task.id + '"' + (task.completed ? 'checked' : '') + '/>' +
+            '<p class="col-10 my-2 mx-2">' + task.content + '</p>' +
+            '<button class="btn delete-btn" data-id="' + task.id + '">X</button>'
+          );
         });
         
         $("#tasks").html(htmlString);
@@ -16,10 +20,21 @@ $(document).on("turbolinks:load", function () {
   $('#add-task').on('submit', function (event) {
     event.preventDefault();
     var content = $('#new-task').val();
-    postTask(content, allTasks());
+    postTask(content);
     allTasks();
 
     $('#new-task').val('');
+  });
+
+  $(document).on('click', '.delete-btn', function () {
+    var id = $(this).data('id');
+    deleteTask(id);
+    allTasks();
+  });
+
+  $(document).on('change', '.check-box', function () {
+    var id = $(this).data('id');
+    console.log(this.checked);
   });
 
   allTasks();
