@@ -4,22 +4,18 @@ $.ajaxSetup({
   }
 });
 
-var indexTasks = function () {
+var indexTasks = function (successCB, errorCB) {
   var request = {
     type: 'GET',
     url: 'api/tasks?api_key=1',
-    success: function (response) {
-      console.log(response);
-    },
-    error: function (request, err) {
-      console.log(request, err);
-    }
+    success: successCB,
+    error: errorCB
   }
 
   $.ajax(request);
 };
 
-var postTask = function (content) {
+var postTask = function (content, successCB, errorCB) {
   var request = {
     type: 'POST',
     url: 'api/tasks?api_key=1',
@@ -28,12 +24,8 @@ var postTask = function (content) {
         content: content
       }
     },
-    success: function (response) {
-      console.log(response);
-    },
-    error: function (request, err) {
-      console.log(request, err);
-    },
+    success: successCB,
+    error: errorCB
   }
 
   $.ajax(request);
