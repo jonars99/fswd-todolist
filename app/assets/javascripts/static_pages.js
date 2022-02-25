@@ -1,17 +1,28 @@
 $(document).on("turbolinks:load", function () {
 
-  var allTasks = function () {
+  var allTasks = function (filter) {
     if ($('.static_pages.index').length > 0) {
       indexTasks(function (response) {
         var htmlString = response.tasks.map(function(task) {
-          return (
-            '<div class="col-12 d-flex flex-row border rounded">' +
-            '<input class="check-box" type="checkbox" data-id="' + task.id + '"' + (task.completed ? 'checked' : '') + '/>' +
-            '<p class="col-10 my-2 mx-2">' + task.content + '</p>' +
-            '<button class="btn delete-btn" data-id="' + task.id + '">X</button>'
-          );
+          var taskblock =
+          '<div class="col-12 d-flex flex-row border rounded">' +
+          '<input class="check-box" type="checkbox" data-id="' + task.id + '"' + (task.completed ? 'checked' : '') + '/>' +
+          '<p class="col-10 my-2 mx-2">' + task.content + '</p>' +
+          '<button class="btn delete-btn" data-id="' + task.id + '">X</button>';
+          if (filter == "active") {
+            if (!task.completed) {
+              return taskblock;
+            }
+          }
+          else if (filter == "completed") {
+            if (task.completed) {
+              return taskblock;
+            }
+          }
+          else {
+            return taskblock;
+          }
         });
-        
         $("#tasks").html(htmlString);
       });
     }
@@ -34,7 +45,16 @@ $(document).on("turbolinks:load", function () {
 
   $(document).on('change', '.check-box', function () {
     var id = $(this).data('id');
-    completeTask(id);
+    if (this.checked) {
+      completeTask(id);
+    }
+    else 
+      activeTask(id);
+  });
+
+  $(document).on('change', '#filter-choice', function () {
+    var filterValue = $("input[name='filter']:checked").val();
+    allTasks(filterValue);
   });
 
   allTasks();
