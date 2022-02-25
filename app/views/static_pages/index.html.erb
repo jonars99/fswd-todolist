@@ -1,15 +1,15 @@
 <div class="container">
-  <div class="row">
-    <div class="col-12">
-      <h1 class="text-center mt-4">To Do List</h1>
+  <div class="row justify-content-center">
+    <div class="col-6 py-2">
+      <h1 class="text-center my-4 fw-light">To Do List</h1>
       <div class="row" id="input">
-        <form id="add-task" class="form-control mb-3">
-          <input id="new-task" class="my-1" type="text" placeholder=" new to do" required/>
-          <button class="btn-default rounded" type="submit">add</button>
+        <form id="add-task" class="form-control mb-3 d-flex justify-content-center">
+          <input id="new-task" class="my-1 fw-light" type="text" placeholder=" new to do" required/>
+          <button class="btn btn-sm rounded fw-light align-self-center ms-3" type="submit">add</button>
         </form>
       </div>
       <div class="row" id="tasks"></div>
-      <form id="filter-choice">
+      <form id="filter-choice" class="fw-light">
         <input type="radio" id="filter-all" name="filter" value="all">
         <label for="filter-all">all</label><br>
         <input type="radio" id="filter-active" name="filter" value="active">

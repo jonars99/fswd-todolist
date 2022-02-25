@@ -5,10 +5,10 @@ $(document).on("turbolinks:load", function () {
       indexTasks(function (response) {
         var htmlString = response.tasks.map(function(task) {
           var taskblock =
-          '<div class="col-12 d-flex flex-row border rounded">' +
+          '<div class="col-12 d-flex flex-row border rounded mb-3">' +
           '<input class="check-box" type="checkbox" data-id="' + task.id + '"' + (task.completed ? 'checked' : '') + '/>' +
           '<p class="col-10 my-2 mx-2">' + task.content + '</p>' +
-          '<button class="btn delete-btn" data-id="' + task.id + '">X</button>';
+          '<button class="btn delete-btn fw-light" data-id="' + task.id + '">X</button>';
           if (filter == "active") {
             if (!task.completed) {
               return taskblock;

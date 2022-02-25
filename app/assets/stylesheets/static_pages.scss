@@ -1,3 +1,45 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+body {
+  background: #012331;
+  color: #C5E1EE;
+}
+
+#add-task {
+  background: #C5E1EE;
+
+  input {
+    border-radius: 5px;
+  }
+
+  button {
+    background-color: #11354A;
+    color: #C5E1EE;
+    height: 75%;
+    line-height: 75%;
+  }
+}
+
+#tasks {
+  div {
+    background-color: #11354A;
+    color: #C5E1EE;
+  }
+  button {
+    color: #df4429;
+  }
+}
+
+#filter-choice {
+  display: flex;
+
+  input {
+    margin-right: .5rem;
+  }
+
+  label {
+    margin-right: 1rem;
+  }
+}
