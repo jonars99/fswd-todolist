@@ -31,16 +31,14 @@ $(document).on("turbolinks:load", function () {
   $('#add-task').on('submit', function (event) {
     event.preventDefault();
     var content = $('#new-task').val();
-    postTask(content);
-    allTasks();
+    postTask(content, allTasks);
 
     $('#new-task').val('');
   });
 
   $(document).on('click', '.delete-btn', function () {
     var id = $(this).data('id');
-    deleteTask(id);
-    allTasks();
+    deleteTask(id, allTasks);
   });
 
   $(document).on('change', '.check-box', function () {
