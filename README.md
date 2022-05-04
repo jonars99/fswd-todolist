@@ -1,6 +1,8 @@
-# To Do List Full-stack
+# Full-stack To Do List
 
-This is a To Do list full-stack application. It has a user table and a task table. And a front-end that consumes the API.
+* Add new tasks to your to do list
+* Mark tasks as complete or delete them
+* User can filter all, active or completed tasks
 
 ## API endpoints
 
